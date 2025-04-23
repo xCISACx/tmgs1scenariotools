@@ -14,7 +14,7 @@ emptyString = "\"\"";
 stringExpr<collapsed> = string | emptyString;
 
 
-functionName = '[A-Z][A-Za-z]*';
+functionName = '[A-Z][A-Za-z_0-9]*';
 
 assign = "=";
 
@@ -53,7 +53,12 @@ expression =  expressionInner | lparen {expressionInner} rparen;
 
 normalStatement = [variableDecl] expression [semicolon];
 
-statement = normalStatement | ifStatement | whileStatement |switchStatement;
+statement = normalStatement | ifStatement | whileStatement |switchStatement | sectionStatement;
+
+sectionHeader = section stringExpr ;
+sectionStatement = sectionHeader lbrace {statement} rbrace;
+
+section = "section";
 
 
 whitespace<hidden, terminal>= {" "|"\v"|"\f"|"\t"|"\r"|"\n"}+; 

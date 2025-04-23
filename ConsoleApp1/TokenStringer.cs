@@ -37,7 +37,7 @@ namespace ConsoleApp1
                 case ScenarioToken.Constant.Integer:
                     return reader.GetInteger().ToString();
                 case ScenarioToken.Constant.Float:
-                    return reader.GetFloat().ToString();
+                    return reader.GetFloat().ToString("F1");
                 case ScenarioToken.Constant.String:
                     return "\"" + reader.GetString() + "\"";
                 case ScenarioToken.Constant.NullString:
