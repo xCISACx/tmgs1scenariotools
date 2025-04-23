@@ -51,33 +51,32 @@ namespace ConsoleApp1
 
         public void Resist()
         {
-            int startOfs = 0x04;
-
-            this.TokenOfs = BitConverter.ToInt32(bin, startOfs);
-            /* if (this.TokenOfs != 0x10)
+            this.TokenOfs = BitConverter.ToInt32(bin, 0x00);
+            if (this.TokenOfs != 0x10)
             {
                 throw new Exception("offset is not 0x10");
             }
-            */
-            this.IntegerTblOfs = BitConverter.ToInt32(bin, this.TokenOfs + 0x04);
-            this.FloatTblOfs = BitConverter.ToInt32(bin, this.TokenOfs + 0x08);
+            this.IntegerTblOfs = BitConverter.ToInt32(bin, 0x04);
+            this.FloatTblOfs = BitConverter.ToInt32(bin, 0x08);
 
             int x10 = this.IntegerTblOfs - 0x10;
             int x8_6 = this.IntegerTblOfs - 0xd;
             if (x10 < 0)
             {
                 this.TokenEnd = x8_6;
-            } else
+            }
+            else
             {
                 this.TokenEnd = x10;
             }
             this.TokenEnd = this.TokenEnd >> 2;
 
-            this.StringTblOfs = BitConverter.ToInt32(bin, this.TokenOfs + 0x0c);
+            this.StringTblOfs = BitConverter.ToInt32(bin, 0x0c);
             return;
 
 
         }
+        
         public void Run()
         {
             //Analyze();
@@ -105,7 +104,7 @@ namespace ConsoleApp1
                     int id = this.LatestArg;
                     ScenarioFunction.Name fName = (ScenarioFunction.Name)id;
                     ScenarioFunction.Group fGroup = (ScenarioFunction.Group)group;
-                    return fName.ToString();
+                    return fGroup + "_" + fName;
                 case ScenarioToken.TokenType.Operator:
                     ScenarioToken.Operator op = (ScenarioToken.Operator)this.LatestId;
                     return op.CodeString();

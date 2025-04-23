@@ -200,8 +200,20 @@ namespace ConsoleApp1
 			Voice_Play
 		}
 
-		public static Group GetGroupFromFunction(Name name)
-        {
+		public static Group GetGroupFromFunction(string name)
+		{
+			string groupString = name.Split(new[] { '_' }, 2)[0];
+			
+			if (Enum.TryParse<Group>(groupString, out var group))
+			{
+				Console.WriteLine($"Parsed group: {group}");
+				return group;
+			}
+			else
+			{
+				throw new ArgumentException($"Invalid group name: {groupString}");
+			}
+			
 			/*switch(name)
             {
 

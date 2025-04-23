@@ -40,13 +40,25 @@ namespace ConsoleApp1
                 {
                     case "functionName":
                         ScenarioFunction.Name functionName;
-                        if (!Enum.TryParse<ScenarioFunction.Name>(node.Value, out functionName))
+                        string[] parts = node.Value.Split(new[] { '_' }, 2);
+                        string groupString = parts[0];
+                        string functionString = parts[1];
+                        if (!Enum.TryParse<ScenarioFunction.Name>(functionString, out functionName))
                         {
                             throw new Exception("unknown function");
                         }
                         resultToken.type = (byte)ScenarioToken.TokenType.Function;
-                        ScenarioFunction.Group group = ScenarioFunction.GetGroupFromFunction(functionName);
-                        resultToken.id = (byte)group;
+			
+                        if (Enum.TryParse<ScenarioFunction.Group>(groupString, out var parsedGroup))
+                        {
+                            Console.WriteLine($"Parsed group: {parsedGroup}");
+                        }
+                        else
+                        {
+                            throw new ArgumentException($"Invalid group name: {groupString}");
+                        }
+                        
+                        resultToken.id = (byte)parsedGroup;
                         resultToken.arg = (ushort)functionName;
 
 
@@ -62,7 +74,7 @@ namespace ConsoleApp1
                                 ScenarioFunction.Name.ChCustomLayout,*/
                             };
 
-                        if (parseAsFloatGroups.Contains(group) || parseAsFloatFuncs.Contains(functionName))
+                        if (parseAsFloatGroups.Contains(parsedGroup) || parseAsFloatFuncs.Contains(functionName))
                         {
                             parseAsFloat = true;
                             /*if (functionName == ScenarioFunction.Name.ChCustomLayout)
@@ -198,7 +210,10 @@ namespace ConsoleApp1
                         resultToken.type = (byte)ScenarioToken.TokenType.Constant;
                         resultToken.id = (byte)ScenarioToken.Constant.NullString;
                         break;
-
+                    case "section":
+                        resultToken.type = (byte)ScenarioToken.TokenType.Reserved;
+                        resultToken.id = (byte)ScenarioToken.Reserved.Section;
+                        break;
                     case "switch":
                         resultToken.type = (byte)ScenarioToken.TokenType.Reserved;
                         resultToken.id = (byte)ScenarioToken.Reserved.Switch;
