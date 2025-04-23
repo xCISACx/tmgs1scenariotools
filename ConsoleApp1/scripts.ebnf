@@ -1,0 +1,78 @@
+﻿grammar<start> = productions;
+productions<collapsed> = production productions | production;
+
+production= statement;
+
+
+varWithType<terminal> = 'int[ ]+var[0-9]+' | 'var[ ]+var[0-9]+';
+var<terminal> = 'var[0-9]+';
+
+variableDecl =  varWithType assign ;
+
+string<terminal> = "\"" '([^\"]|\\\")+' "\"";
+emptyString = "\"\"";
+stringExpr<collapsed> = string | emptyString;
+
+
+functionName = '[A-Z][A-Za-z]*';
+
+assign = "=";
+
+integer<terminal> = '[-]?[0-9]+';
+
+literal = stringExpr | integer | float;
+
+
+float<terminal> = '[-]?[0-9]+\.[0-9]+';
+functionParam<collapsed> = expression functionParam | expression ;
+
+// function = functionName lparen (rparen | functionParam { comma functionParam } rparen) ;
+function = functionName lparen ( [functionParam { comma functionParam } ]  rparen) ;
+// identifier = '[A-Z_a-z][A-Za-z]*';
+
+whileHeader = while lparen  {expression} rparen ;
+whileStatement = whileHeader lbrace {statement} rbrace;
+
+ifHeader = [else] if  lparen  {expression} rparen | else;
+ifStatement = ifHeader lbrace {statement} rbrace;
+
+
+
+
+
+switchHeader = switch lparen {expression} rparen;
+switchStatement = switchHeader lbrace {switchBody} rbrace;
+
+A =  case integer colon {statement};
+B = default colon {statement};
+
+switchBody = A | B;
+
+expressionInner = function | var [assign expression] | ops | literal | return | break ;
+expression =  expressionInner | lparen {expressionInner} rparen;
+
+normalStatement = [variableDecl] expression [semicolon];
+
+statement = normalStatement | ifStatement | whileStatement |switchStatement;
+
+
+whitespace<hidden, terminal>= {" "|"\v"|"\f"|"\t"|"\r"|"\n"}+; 
+
+lparen = "(";
+rparen = ")";
+lbrace = "{";
+rbrace = "}";
+semicolon = ";";
+
+comma = ",";
+if = "if" ;
+else = "else";
+return = "return";
+switch = "switch";
+case = "case";
+colon = ":";
+break = "break";
+default = "default";
+while = "while";
+
+ops<terminal> = "==" | "||" | "&&" | "!=" | "<" | "<=" | ">" | ">=" | "+" | "-" | "*" | "/" | "%" ;

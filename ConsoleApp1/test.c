@@ -1,0 +1,311 @@
+BGOpen("ho100",0);
+ScrFadeIn(0);
+MsgDisp("主人公","いってきまーす！");
+SEPlay("EV_SE_DOOR_022");
+SEWait();
+MsgClose();
+SEPlay("EV_SE_DOOR_023");
+ScrFadeOut(0,0);
+SEWait();
+BGOpen("ho000",0);
+ScrFadeIn(0);
+MsgDisp("主人公","（うーん、気持ちのいい朝。
+わたしの高校生活、いいことありそう！）");
+MsgDisp("主人公","（“りょうた”くん、
+昨日、家に来てくれたんだよね。
+わたしは会えなかったけど……）");
+MsgDisp("主人公","（雰囲気、変わったかなぁ。
+でも、きっと物知りで活発なところは
+あの頃のままなんだろうな……）");
+SEPlay("EV_SE_FOOT_WALK_KEEP_ALONE",0,0.6);
+MsgClose();
+ScrFadeOut(0,0);
+SEWait();
+BGOpen("sc010",0);
+ScrFadeIn(0);
+MsgDisp("主人公","（小学生の時と同じ通学路。
+昨日の夢の中でも見た、懐かしい道。
+なんだか不思議な気持ち……）");
+Wait(30,1);
+EfctOpen(6);
+MsgDisp("主人公","（わっ、太陽がまぶしい！）");
+MsgClose();
+ScrFadeOut(0,1);
+EfctClose();
+Wait(40,1);
+VoicePlay("A020100000_01_000");
+MsgDisp("？風真","久々の再会なのに。
+しかめっ面かよ。");
+StlOpen("ev_01_01");
+StlEye(1,0);
+StlMouth(1,0);
+EfctOpen(6);
+BGMPlay("BGM_C01_RYOUTA_I",0.01);
+ScrFadeIn(0);
+MsgDisp("主人公","∋
+もしかして……
+りょう――｛風真＊＊｝？");
+StlEye(1,1);
+StlMouth(1,1);
+Wait(30,1);
+MsgClose();
+ScrFadeOut(0,0);
+EfctClose();
+StlClose();
+BGOpen("sc010",0);
+ChLayout(1);
+SEPlay("EV_SE_FOOT_WALK_COME_ALONE_SHORT");
+SEWait();
+MsgClose();
+ChOpen(1,254,0,2,3,0,-1,0,0);
+ScrFadeIn(0);
+ChMotion(1,1);
+VoicePlay("A020100000_01_010");
+MsgDisp("風真","あー、そうです。か・ざ・ま、です。
+昔、よく一緒に遊んだ気がしますが。");
+ChMotion(1,0);
+Wait(12,0);
+ChEye(1,4);
+ChMouth(1,3);
+VoicePlay("A020100000_01_020");
+MsgDisp("風真","……まあ、こういうのも含めておまえだもんな？
+期待しすぎちゃった俺が悪い。うん。");
+ChEyeOpenLevel(1,0);
+Wait(8,0);
+ChEye(1,0);
+ChMouth(1,3);
+ChMotion(1,0);
+VoicePlay("A020100000_01_030");
+MsgDisp("風真","改めて……
+９年ぶりだな。
+変わらず元気そうでよかった。");
+MsgDisp("主人公","本当に久しぶり！
+｛風真＊＊｝、すごく大人っぽくなったね？
+夢で見た小学生の頃とは全然違うよ……");
+ChEye(1,3);
+ChMouth(1,3);
+ChMotion(1,3);
+VoicePlay("A020100000_01_040");
+MsgDisp("風真","おまえ……
+俺の夢なんか見てんの？");
+MsgDisp("主人公","そう、今朝ちょうど。
+不思議だよね？");
+ChEye(1,4);
+ChMouth(1,4);
+ChMotion(1,4);
+VoicePlay("A020100000_01_050");
+MsgDisp("風真","……べ、べつに。
+トクベツ不思議な事でもないんじゃ？");
+MsgDisp("主人公","ところで、その制服姿ってことは――
+もしかして、はばたき学園に通うの？");
+ChMotion(1,0);
+ChEyeOpenLevel(1,0);
+Wait(12,0);
+ChEye(1,0);
+ChMouth(1,0);
+VoicePlay("A020100000_01_060");
+MsgDisp("風真","そ。予想以上の展開で俺もビックリだよ。
+昨日、おばさんに言っておいたけど、
+聞いてない？");
+MsgDisp("主人公","ゴメン、わたしも｛風真＊＊｝が
+帰ってきたことにびっくりして、
+ちゃんと聞いてなかったかも……");
+MsgDisp("主人公","また同じ学校に通うだなんて。
+まるで、小学校に戻ったみたいだね？");
+ChEye(1,0);
+ChMouth(1,3);
+ChMotion(1,3);
+VoicePlay("A020100000_01_070");
+MsgDisp("風真","ああ。
+……そろそろ行こうぜ。
+ちょっと感動の再会が長引きすぎた。");
+MsgDisp("主人公","あっ、ホントだ！
+行こ！");
+SEPlay("EV_SE_FOOT_WALK_AWAY_TWO_LONG");
+BGMStop(2);
+MsgClose();
+ScrFadeOut(0,0);
+ChClose(1,0,0);
+Wait(60,0);
+SEWait();
+MsgDisp("","　　　　　　　　　　 ・
+　　　　　　　　　　 ・
+　　　　　　　　　　 ・");
+MsgClose();
+BGOpen("ex240",0);
+NSSOpen(1,254,0,0,-1,-1,0);
+SEPlay("EV_SE_754",0.5,0.5,0.25);
+ScrFadeIn(0);
+VoicePlay("A020100000_01_071");
+BGMVol(0.5,0.5);
+MsgDisp("風真","小一のときもさ、この坂道のぼって
+二人で学校行ってたよな。");
+MsgDisp("主人公","うん。
+……あ、そうだ！");
+NSSEye(1,3);
+NSSMouth(1,2);
+VoicePlay("A020100000_01_080");
+MsgDisp("風真","何だよ？");
+MsgDisp("主人公","おかえりなさい。");
+NSSEye(1,6);
+NSSMouth(1,3);
+NSSCheek(1,7);
+VoicePlay("A020100000_01_090");
+MsgDisp("風真","ただいま……");
+NSSEyeOpenLevel(1,0);
+Wait(20,0);
+NSSEye(1,0);
+NSSCheek(1,0);
+MsgDisp("主人公","昨日はごめんね？
+せっかくうちに来てくれたのに
+わたし、留守にしちゃってて。");
+NSSEye(1,4);
+NSSMouth(1,0);
+VoicePlay("A020100000_01_100");
+MsgDisp("風真","いいよ。
+帰国便も遅れてたし、
+俺もいきなり訪ねたから。");
+MsgDisp("主人公","え∋
+本当に昨日、帰ってきたばかりなの？");
+NSSEye(1,0);
+NSSMouth(1,3);
+VoicePlay("A020100000_01_110");
+MsgDisp("風真","そう。俺だけ先にな。
+イギリスって９月が新学期だから、
+このタイミングって手続きが多くてさ。");
+MsgDisp("主人公","そうだったんだ……");
+NSSEye(1,6);
+NSSMouth(1,3);
+NSSEyeOpenLevel(1,5);
+VoicePlay("A020100000_01_120");
+MsgDisp("風真","４月からこっちの高校に通うの、
+もうダメかと思ったけど、
+なんとかギリギリで間に合った。");
+NSSEye(1,0);
+NSSMouth(1,0);
+VoicePlay("A020100000_01_130");
+MsgDisp("風真","で、父さんたちはまだアッチで仕事してる。
+こっちの骨董屋にはおじいちゃんがいるし、
+俺は暫くひとりで自宅の方に住むことにした。");
+MsgDisp("主人公","あの大きなおうちにひとりで暮らすの？
+じゃあ、もし困ったことがあったら――");
+NSSEye(1,0);
+NSSMouth(1,3);
+NSSEyeOpenLevel(1,5);
+VoicePlay("A020100000_01_140");
+MsgDisp("風真","それより。");
+NSSEye(1,6);
+NSSMouth(1,0);
+VoicePlay("A020100000_01_150");
+MsgDisp("風真","……おまえ、覚えてる？
+あの時のこと。");
+NSSEyeOpenLevel(1,0);
+Wait(20,0);
+NSSEye(1,0);
+MsgDisp("主人公","あの時……？");
+MsgSel("不思議な教会と、鐘の音のこと？","かざぐるまにした二人のお願い事のこと？","いろんな時があったけど、どれかな……");
+switch (MsgSelRsltGet()){
+    case 0:
+    MsgDisp("主人公","不思議な教会と、鐘の音のこと？");
+    NSSEye(1,6);
+    NSSMouth(1,0);
+    VoicePlay("A020100000_01_160");
+    MsgDisp("風真","まあ、それもだけど。
+あの時、その教会で二人でした――");
+    break ;
+    case 1:
+    MsgDisp("主人公","かざぐるまにした二人のお願い事のこと？");
+    NSSEye(1,6);
+    NSSMouth(1,3);
+    NSSCheek(1,7);
+    VoicePlay("A020100000_01_170");
+    MsgDisp("風真","ソレ。
+見るからにおまえ、元気そうだし。
+“願い事”は問題なく叶いそうだな……");
+    break ;
+    case 2:
+    MsgDisp("主人公","いろんな時があったけど、どれかな……");
+    NSSEye(1,2);
+    NSSMouth(1,0);
+    VoicePlay("A020100000_01_180");
+    MsgDisp("風真","いろんな時って……
+あいかわらずのん気そーなところは
+変わらないっていうか、心配っていうか……");
+    break ;
+    default :
+    DbgAssert(0);
+    break ;
+    }
+SEStop("EV_SE_754",1.5);
+MsgClose();
+ScrFadeOut(0);
+NSSClose();
+Wait(40,0);
+BGOpen("sc110",0);
+BGMPlay("BGM_ENT_CEREMONY",0.01);
+ChLayout(1);
+MsgClose();
+ChOpen(1,254,0,0,0,10,-1,0,0);
+ScrFadeIn(0);
+SEPlay("EV_SE_588");
+SEPlay("EV_SE_789");
+Wait(60,1);
+ChEye(1,2);
+ChMouth(1,0);
+ChMotion(1,4);
+ChEyeOpenLevel(1,0);
+Wait(120,1);
+ChEye(1,4);
+ChMouth(1,4);
+ChMotion(1,0);
+Wait(60,1);
+VoicePlay("A020100000_48_000");
+MsgDisp("女子生徒Ａ","ほら、あの人！
+カザマリョウタくんだよ。");
+ChEye(1,2);
+ChMouth(1,2);
+ChMotion(1,0);
+ChEyeOpenLevel(1,0);
+VoicePlay("A020100000_44_000");
+MsgDisp("女子生徒Ｂ","あの噂って本当だったんだ～∈
+同じクラスになったらどうしよ～∋");
+ChEye(1,4);
+ChMouth(1,1);
+ChMotion(1,0,1);
+ChEyeOpenLevel(1,0);
+VoicePlay("A020100000_48_010");
+MsgDisp("女子生徒Ａ","ヤバいよねー！
+うちのおじーちゃんなんて「若様」って
+呼んでたもん。超お坊っちゃんなんだよ。");
+MsgDisp("主人公","？
+ねえ、｛風真＊＊｝のことを
+噂してるように聞こえるけど……");
+SEStop("EV_SE_588",1);
+SEStop("EV_SE_789",1);
+ChEye(1,0);
+ChMouth(1,2);
+ChMotion(1,1);
+VoicePlay("A020100000_01_190");
+MsgDisp("風真","…………
+聞こえませーん。
+ていうか、聞くな。あんなの。");
+MsgDisp("主人公","（若様とか、気になるよ……）");
+ChMotion(1,0);
+ChEyeOpenLevel(1,0);
+Wait(12,0);
+ChMouth(1,3);
+ChEyeOpenLevel(1,8);
+VoicePlay("A020100000_01_200");
+MsgDisp("風真","若様とか気になるよ、とか考えるの、
+ヤメロよな。");
+MsgDisp("主人公","∋
+（読まれた……）");
+ChEye(1,3);
+ChMouth(1,3);
+ChMotion(1,3);
+VoicePlay("A020100000_01_210");
+MsgDisp("風真","顔に出すぎ！");
+MsgClose();
+ScrFadeOut(0,0);
+ChClose(1,0,0);
+ChPrmTblAdd(1,0);
