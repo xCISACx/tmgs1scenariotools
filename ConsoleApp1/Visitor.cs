@@ -51,7 +51,7 @@ namespace ConsoleApp1
 			
                         if (Enum.TryParse<ScenarioFunction.Group>(groupString, out var parsedGroup))
                         {
-                            Console.WriteLine($"Parsed group: {parsedGroup}");
+                            //Console.WriteLine($"Parsed group: {parsedGroup}");
                         }
                         else
                         {
@@ -298,6 +298,14 @@ namespace ConsoleApp1
                     case "while":
                         resultToken.type = (byte)ScenarioToken.TokenType.Reserved;
                         resultToken.id = (byte)ScenarioToken.Reserved.While;
+                        break;
+                    case "label":
+                        resultToken.type = (byte)ScenarioToken.TokenType.Reserved;
+                        resultToken.id = (byte)ScenarioToken.Reserved.Label;
+                        break;
+                    case "goto":
+                        resultToken.type = (byte)ScenarioToken.TokenType.Reserved;
+                        resultToken.id = (byte)ScenarioToken.Reserved.GoTo;
                         break;
                     default:
                         throw new Exception("unhandled");

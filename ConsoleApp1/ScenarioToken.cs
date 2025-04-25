@@ -63,7 +63,11 @@ namespace ConsoleApp1
 			// Token: 0x04000A04 RID: 2564
 			Pause,
 			// Token: 0x04000A05 RID: 2565
-			Run
+			Run,
+			// Token: 0x4000725
+			Label,
+			// Token: 0x4000726
+			GoTo
 		}
 
 		// Token: 0x02000202 RID: 514
@@ -128,11 +132,7 @@ namespace ConsoleApp1
 			// Token: 0x04000A23 RID: 2595
 			SingleMinus,
 			// Token: 0x04000A24 RID: 2596
-			End,
-			// Token: 0x4000725
-			Label,
-			// Token: 0x4000726
-			GoTo
+			End
 		}
 
 		// Token: 0x02000203 RID: 515

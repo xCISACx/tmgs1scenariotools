@@ -7,8 +7,6 @@ production= statement;
 varWithType<terminal> = 'int[ ]+var[0-9]+' | 'var[ ]+var[0-9]+';
 var<terminal> = 'var[0-9]+';
 
-variableDecl =  varWithType assign ;
-
 string<terminal> = "\"" '([^\"]|\\\")+' "\"";
 emptyString = "\"\"";
 stringExpr<collapsed> = string | emptyString;
@@ -33,9 +31,12 @@ function = functionName lparen ( [functionParam { comma functionParam } ]  rpare
 whileHeader = while lparen  {expression} rparen ;
 whileStatement = whileHeader lbrace {statement} rbrace;
 
-ifHeader = [else] if  lparen  {expression} rparen | else;
+ifHeader = [else] if ifCondition | else;
 ifStatement = ifHeader lbrace {statement} rbrace;
 
+ifSingle = function | var | literal;
+
+ifCondition = ifSingle [ops ifCondition] | lparen ifCondition rparen [ops ifCondition];
 
 
 
@@ -43,7 +44,7 @@ ifStatement = ifHeader lbrace {statement} rbrace;
 switchHeader = switch lparen {expression} rparen;
 switchStatement = switchHeader lbrace {switchBody} rbrace;
 
-A =  case integer colon {statement};
+A =  case integer {comma integer} colon {statement};
 B = default colon {statement};
 
 switchBody = A | B;
@@ -51,15 +52,20 @@ switchBody = A | B;
 expressionInner = function | var [assign expression] | ops | literal | return | break ;
 expression =  expressionInner | lparen {expressionInner} rparen;
 
-normalStatement = [variableDecl] expression [semicolon];
+normalStatement = expression [semicolon];
+variableDeclarationStatement = varWithType semicolon | varWithType assign normalStatement;
 
-statement = normalStatement | ifStatement | whileStatement |switchStatement | sectionStatement;
+statement = normalStatement | ifStatement | whileStatement |switchStatement | sectionStatement | labelStatement | gotoStatement | variableDeclarationStatement ;
 
 sectionHeader = section stringExpr ;
 sectionStatement = sectionHeader lbrace {statement} rbrace;
 
-section = "section";
+labelStatement = label stringExpr colon;
+gotoStatement = goto stringExpr semicolon;
 
+section = "section";
+label = "label";
+goto = "goto";
 
 whitespace<hidden, terminal>= {" "|"\v"|"\f"|"\t"|"\r"|"\n"}+; 
 
@@ -80,4 +86,4 @@ break = "break";
 default = "default";
 while = "while";
 
-ops<terminal> = "==" | "||" | "&&" | "!=" | "<" | "<=" | ">" | ">=" | "+" | "-" | "*" | "/" | "%" ;
+ops<terminal> = "==" | "||" | "&&" | "!=" | "<" | "<=" | ">" | ">=" | "+" | "-" | "*" | "/" | "%" | "&" | "|" | "^" | "~" | "!";
