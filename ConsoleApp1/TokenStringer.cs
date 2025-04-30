@@ -107,7 +107,7 @@ namespace ConsoleApp1
                 case ScenarioToken.Operator.BitNot:
                     return "~";
                 case ScenarioToken.Operator.SingleMinus:
-                    return "-";
+                    return "€"; // for distinguishing between minuses
                 case ScenarioToken.Operator.End:
                     return "END";
                 default:
